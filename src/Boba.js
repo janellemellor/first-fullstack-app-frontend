@@ -6,14 +6,14 @@ export default class Boba extends Component {
         const {
             flavor, 
             type, 
-            is_milk_tea, 
             url, 
-            star_rating,
         } = boba;
 
         return (
             <li>
                 <h3>{ flavor }</h3>
+                <img src ={ url } alt='boba tea icon'></img>
+                <p>type: { type } </p>
             </li>
             
         )
