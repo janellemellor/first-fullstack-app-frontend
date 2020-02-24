@@ -12,7 +12,7 @@ export default class Boba extends Component {
         return (
             <li>
                 <h3>{ flavor }</h3>
-                <img src ={ url } alt='boba tea icon'></img>
+                <img src ={ url } alt={ boba.flavor }></img>
                 <p>type: { type } </p>
             </li>
             
