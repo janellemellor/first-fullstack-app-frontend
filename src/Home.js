@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent';
 import Boba from './Boba.js';
+import { Link } from 'react-router-dom'; 
 
 export default class Home extends Component {
     state = {
@@ -15,14 +16,20 @@ export default class Home extends Component {
 
     render() {
         return (
-            <main>
-                <ul>
-                    {this.state.bobaData.map(boba => 
-                        <Boba boba={boba} />
-                        )}
-                </ul>
-                
-            </main>
+            <div>
+                <header> Mo' Boba 
+                </header>
+                <main>
+                    <ul>
+                        {this.state.bobaData.map(boba => 
+                            <Link key={boba.id} to={`/detail/${boba.bobaData}`}>
+                            <Boba boba={boba} />
+                            </Link>
+                            )}
+                    </ul>
+                    
+                </main>
+            </div>
         )
     }
 }

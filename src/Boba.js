@@ -6,13 +6,13 @@ export default class Boba extends Component {
         const {
             flavor, 
             type, 
-            url, 
+            image, 
         } = boba;
 
         return (
             <li>
                 <h3>{ flavor }</h3>
-                <img src ={ url } alt={ boba.flavor }></img>
+                <img src ={ image } alt={ boba.flavor }></img>
                 <p>type: { type } </p>
             </li>
             
