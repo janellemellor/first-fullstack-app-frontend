@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { getBobaData, getTypesData, postBobaData } from './bobaAPI.js';
+import { getTypesData } from './bobaAPI.js';
+import request from 'superagent';
 
 export default class CreateBoba extends Component {
     state = {
@@ -22,7 +23,21 @@ export default class CreateBoba extends Component {
         this.setState({ type: Number(e.target.value) })
     }
 
+    handleMilkTeaChange = (e) => {
+        const boolean = e.target.value === 'true'
+        ? true
+        : false
 
+        this.setState({ milkTea: boolean })
+    }
+
+    handleImageChange = (e) => {
+        this.setState({ image: e.target.value })
+    }
+
+    handleStarRatingChange = (e) => {
+        this.setState({ star_rating: Number(e.target.value)}) 
+    }
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +50,8 @@ export default class CreateBoba extends Component {
             stars: this.state.star_rating
         } 
 
-        const createNewCat = await postBobaData(newBoba);
+        // const createNewCat = await postBobaData(newBoba);
+        const createNewCat = await request.post(`https://cryptic-hamlet-62196.herokuapp.com/api/boba`, newBoba)
 
         console.log(createNewCat);
 
@@ -64,29 +80,27 @@ export default class CreateBoba extends Component {
                                 {type.type}    
                                 </option>)} 
                             </select>
-                            
                         </label>
 
                         <label>
                             Is Milk Tea?
-                            <input>
-                            </input>
+                            <select value={ this.state.isMilkTea } onChange={this.handleMilkTeaChange }>
+                                <option value="true" >True</option>
+                                <option value="false" >false</option>
+                            </select>
                         </label>
 
                         <label>
                             Image:
-                            <input>
-                            </input>
+                            <input onChange={ this.handleImageChange } value={ this.state.image } />
                         </label>
 
                         <label>
                             Star Rating
-                            <input>
-                            </input>
+                            <input onChange={ this.handleStarRatingChange } value={ this.state.star_rating } />
                         </label>
 
                         <button>Create!</button>
-
                     </form>
                 </legend>
             </fieldset>     
