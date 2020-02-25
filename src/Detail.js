@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
 import Boba from './Boba.js';
-import request from 'superagent';
+import { getBobaData } from './bobaAPI.js';
 
 export default class Detail extends Component {
-    state = { boba: {} }
+    state = { eachBoba: {} }
 
     async componentDidMount() {
-        const getBobaData = await request.get(` https://cryptic-hamlet-62196.herokuapp.com/api/boba`);
+        //check the end of params - bobaId may be weird
+        const  eachBobaItem = await getBobaData(this.props.match.params.bobaId);
 
-        this.setState({ boba: getBobaData.body })
+        this.setState({ eachBoba: eachBobaItem.body[0]})
     }
 
 
     render() {
-        const { boba } = this.state;
+        const { eachBoba } = this.state;
         return (
             <div>
-                <Boba boba={ boba } />
+                <Boba boba={ eachBoba } />
             </div>
         )
     }

@@ -7,6 +7,7 @@ export default class Boba extends Component {
             flavor, 
             type, 
             image, 
+            star_rating,
         } = boba;
 
         return (
@@ -14,6 +15,7 @@ export default class Boba extends Component {
                 <h3>{ flavor }</h3>
                 <img src ={ image } alt={ boba.flavor }></img>
                 <p>type: { type } </p>
+                <p>star rating: { star_rating }</p>
             </li>
             
         )

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import request from 'superagent';
 import Boba from './Boba.js';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { getBobaData } from './bobaAPI.js'; 
+
 
 export default class Home extends Component {
     state = {
@@ -9,9 +10,9 @@ export default class Home extends Component {
     }
 
     async componentDidMount() {
-        const getBobaData = await request.get(` https://cryptic-hamlet-62196.herokuapp.com/api/boba`)
+        const bobaInfo = await getBobaData();
         
-        this.setState({ bobaData: getBobaData.body })
+        this.setState({ bobaData: bobaInfo.body})
     }
 
     render() {

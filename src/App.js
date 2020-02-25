@@ -17,7 +17,7 @@ export default class App extends Component {
           <Link className="page-links" to="/">Return Home</Link>
           <Switch>
             <Route exact path="/:bobaData?" component={Home} />
-            <Route exact path="/detail/:boba" component={Detail} />
+            <Route exact path="/detail/:bobaId" component={Detail} />
           </Switch>
         </div>  
       </Router>    
