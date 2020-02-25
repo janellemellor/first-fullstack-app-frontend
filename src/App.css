@@ -42,5 +42,22 @@ li {
   border: black 1px solid;
   border-radius: 5%;
   text-align: center;
+}
+
+fieldset {
+  margin: 0 auto;
+}
+
+legend {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+label {
+  display: flex;
   
 }
+
+
