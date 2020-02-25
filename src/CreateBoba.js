@@ -8,6 +8,22 @@ export default class CreateBoba extends Component {
         type: 1,
     };
 
+    componentDidMount = async() => {
+        const types = await getTypesData();
+
+        this.setState({ types: types.body });
+    }
+
+    handleFlavorChange = (e) => {
+        this.setState({ flavor: e.target.value })
+    }
+
+    handleTypeChange = (e) => {
+        this.setState({ type: Number(e.target.value) })
+    }
+
+
+
     handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -34,17 +50,21 @@ export default class CreateBoba extends Component {
             <fieldset>   
                 <legend>
                     <h3>Create your own Boba!</h3>
-                    <form onSubmit={this.props.handleSubmit}>
+                    <form onSubmit={this.handleSubmit}>
                         <label>
                             Flavor:
-                            <input>
-                            </input>
+                            <input value={ this.state.flavor } onChange={this.handleFlavorChange} />
+                          
                         </label>
 
                         <label>
                             Type:
-                            <input>
-                            </input>
+                            <select onChange={ this.handleTypeChange }> 
+                                { this.state.types.map(type => <option value={type.id}>
+                                {type.type}    
+                                </option>)} 
+                            </select>
+                            
                         </label>
 
                         <label>
