@@ -23,7 +23,7 @@ export default class Home extends Component {
                 <main>
                     <ul>
                         {this.state.bobaData.map(boba => 
-                            <Link key={boba.bobas_id} to={`/detail/${boba.bobaData}`}>
+                            <Link key={boba.bobas_id} to={`/detail/${boba.flavor}`}>
                             <Boba boba={boba} />
                             </Link>
                             )}

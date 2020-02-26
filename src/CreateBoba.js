@@ -7,6 +7,9 @@ export default class CreateBoba extends Component {
         types: [],
         milkTea: true,
         type: 1,
+        flavor: '',
+        image: '',
+        star_rating: 0
     };
 
     componentDidMount = async() => {
@@ -41,19 +44,19 @@ export default class CreateBoba extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();
-
+        console.log(this.state);
         const newBoba = {
             flavor: this.state.flavor,
-            isMilkTea: this.state.milkTea, 
-            typeId: this.state.type_id,
+            is_milk_tea: this.state.milkTea, 
+            type_id: this.state.type,
             image: this.state.image, 
-            stars: this.state.star_rating
+            star_rating: this.state.star_rating,
         } 
 
-        // const createNewCat = await postBobaData(newBoba);
-        const createNewCat = await request.post(`https://cryptic-hamlet-62196.herokuapp.com/api/boba`, newBoba)
+    
+        const createNewBoba = await request.post(`https://cryptic-hamlet-62196.herokuapp.com/api/boba`, newBoba)
 
-        console.log(createNewCat);
+        console.log(createNewBoba);
 
         this.props.history.push('/');
         
